@@ -1,6 +1,7 @@
 package org.example.module_1;
 
 import org.assertj.core.api.Assertions;
+import org.example.BaseTest;
 import org.junit.jupiter.api.Test;
 
 class FirstClass extends BaseTest {

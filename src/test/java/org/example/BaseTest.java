@@ -1,4 +1,4 @@
-package org.example.module_1;
+package org.example;
 
 import com.microsoft.playwright.*;
 import org.junit.jupiter.api.AfterAll;
