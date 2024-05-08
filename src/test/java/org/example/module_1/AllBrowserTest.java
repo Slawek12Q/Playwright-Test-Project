@@ -2,7 +2,7 @@ package org.example.module_1;
 
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.AriaRole;
-import org.example.BaseTest;
+import org.example.common.BaseTest;
 import org.junit.jupiter.api.Test;
 
 import java.nio.file.Paths;

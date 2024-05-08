@@ -1,7 +1,7 @@
 package org.example.module_1;
 
 import com.microsoft.playwright.Page;
-import org.example.BaseTest;
+import org.example.common.BaseTest;
 import org.junit.jupiter.api.Test;
 
 import java.nio.file.Paths;

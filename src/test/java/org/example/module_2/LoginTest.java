@@ -3,7 +3,7 @@ package org.example.module_2;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.assertions.PlaywrightAssertions;
 import com.microsoft.playwright.options.AriaRole;
-import org.example.BaseTest;
+import org.example.common.BaseTest;
 import org.junit.jupiter.api.Test;
 
 public class LoginTest extends BaseTest {
