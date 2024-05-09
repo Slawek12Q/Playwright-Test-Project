@@ -27,4 +27,27 @@ public class DynamicWaitTest extends BaseTest {
 //        page.click("div#start > button");
 //        page.screenshot(new Page.ScreenshotOptions().setPath(Paths.get("screenshot/dynamic_wait.png")));
     }
+
+    @Test
+    public void dynamicControlTest() {
+        page.navigate("https://the-internet.herokuapp.com/dynamic_controls", new Page.NavigateOptions().setWaitUntil(WaitUntilState.NETWORKIDLE));
+
+        Locator removeButton = page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Remove"));
+
+        Locator text = page.getByText("It's gone!");
+
+        PlaywrightAssertions.assertThat(text).not().isVisible();
+        removeButton.click();
+        PlaywrightAssertions.assertThat(text).isVisible();
+
+        Locator input = page.locator("//form/input");
+
+        PlaywrightAssertions.assertThat(input).isDisabled();
+
+        Locator enableButton = page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Enable"));
+        enableButton.click();
+
+        PlaywrightAssertions.assertThat(input).isEnabled();
+
+    }
 }
