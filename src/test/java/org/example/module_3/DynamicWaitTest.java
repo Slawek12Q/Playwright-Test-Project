@@ -9,10 +9,10 @@ import org.junit.jupiter.api.Test;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
-public class DynamicWaitTest extends BaseTest {
+class DynamicWaitTest extends BaseTest {
 
     @Test
-    public void dynamicWaitTest() {
+    void dynamicWaitTest() {
         page.navigate("https://the-internet.herokuapp.com/dynamic_loading/1", new Page.NavigateOptions().setWaitUntil(WaitUntilState.NETWORKIDLE));
         Locator text = page.getByRole(AriaRole.HEADING, new Page.GetByRoleOptions().setName("Hello World"));
 
@@ -28,7 +28,7 @@ public class DynamicWaitTest extends BaseTest {
     }
 
     @Test
-    public void dynamicControlTest() {
+    void dynamicControlTest() {
         page.navigate("https://the-internet.herokuapp.com/dynamic_controls", new Page.NavigateOptions().setWaitUntil(WaitUntilState.NETWORKIDLE));
 
         Locator removeButton = page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Remove"));
