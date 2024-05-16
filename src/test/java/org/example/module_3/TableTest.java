@@ -38,6 +38,4 @@ public class TableTest extends BaseTest {
                 .filter(i -> i.getFirstName().equals("Jason"))
                 .findFirst().ifPresent(System.out::println);
     }
-
-
 }
