@@ -23,7 +23,6 @@ public class ShopTest extends BaseTest {
         Locator menuBar = page.locator("#block_top_menu");
         menuBar.locator(page.getByRole(AriaRole.LINK, new Page.GetByRoleOptions().setName("DRESSES"))).click();
         List<Locator> allItems = page.locator("//div[@class='product-container']").all();
-
         allItems.stream().forEach(System.out::println);
 
         List<ShopItem> shopItemList = allItems.stream()
