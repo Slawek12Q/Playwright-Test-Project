@@ -8,7 +8,7 @@ import com.microsoft.playwright.options.WaitUntilState;
 import org.example.common.BaseTest;
 import org.junit.jupiter.api.Test;
 
-public class DialogTest extends BaseTest {
+class DialogTest extends BaseTest {
 
     @Test
     public void checkJSAllert() {
