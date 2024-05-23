@@ -23,6 +23,10 @@ public class BaseTest {
     @BeforeEach
     void beforeEach() {
         context = browser.newContext();
+
+
+
+
         page = context.newPage();
     }
 
