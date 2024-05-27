@@ -6,6 +6,8 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 
+import java.nio.file.Paths;
+
 public class BaseTest {
 
     private static Playwright playwright;
@@ -22,10 +24,15 @@ public class BaseTest {
 
     @BeforeEach
     void beforeEach() {
+//        Bacis Auth
+//        context = browser.newContext(new Browser.NewContextOptions().setHttpCredentials("admin", "admin"));
         context = browser.newContext();
 
-
-
+        //
+        context.tracing().start(new Tracing.StartOptions()
+                .setScreenshots(true)
+                .setSnapshots(true)
+                .setSources(true));
 
         page = context.newPage();
     }
@@ -33,6 +40,7 @@ public class BaseTest {
 
     @AfterEach
     void afterEach() {
+        context.tracing().stop(new Tracing.StopOptions().setPath(Paths.get("trace/trace.zip")));
         context.close();
     }
 
