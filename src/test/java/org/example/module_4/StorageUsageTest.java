@@ -1,6 +1,7 @@
 package org.example.module_4;
 
 import com.microsoft.playwright.*;
+import com.microsoft.playwright.assertions.PlaywrightAssertions;
 import com.microsoft.playwright.options.WaitUntilState;
 import org.example.common.BaseTest;
 import org.junit.jupiter.api.Test;
@@ -23,7 +24,15 @@ public class StorageUsageTest extends BaseTest {
         page.locator("#SubmitLogin").click();
 
         browserContext.storageState(new BrowserContext.StorageStateOptions().setPath(Paths.get("storage/storage_state.json")));
+    }
 
+    @Test
+    public void loadStorageStateAfterLogin() {
+        BrowserContext browserContext = browser.newContext(new Browser.NewContextOptions().setStorageStatePath(Paths.get("storage/storage_state.json")));
+        Page page = browserContext.newPage();
+        page.navigate("http://www.automationpractice.pl/index.php?controller=authentication&back=my-account", new Page.NavigateOptions().setWaitUntil(WaitUntilState.NETWORKIDLE));
 
+        PlaywrightAssertions.assertThat(page.locator("//div/h1[@class='page-heading']")).isVisible();
+        page.pause();
     }
 }
