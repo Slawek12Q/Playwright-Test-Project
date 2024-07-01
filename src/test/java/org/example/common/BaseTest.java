@@ -1,12 +1,11 @@
 package org.example.common;
 
 import com.microsoft.playwright.*;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.*;
 
 import java.nio.file.Paths;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class BaseTest {
 
@@ -29,18 +28,23 @@ public class BaseTest {
         context = browser.newContext();
 
         //
-        context.tracing().start(new Tracing.StartOptions()
-                .setScreenshots(true)
-                .setSnapshots(true)
-                .setSources(true));
+       context.tracing().start(new Tracing.StartOptions()
+               .setSources(true)
+               .setSnapshots(true)
+               .setScreenshots(true));
 
         page = context.newPage();
     }
 
 
     @AfterEach
-    void afterEach() {
-        context.tracing().stop(new Tracing.StopOptions().setPath(Paths.get("trace/trace.zip")));
+    void afterEach(TestInfo testInfo) {
+        String traceName = "trace/trace_"
+                +testInfo.getDisplayName().replace("()", "")
+                + LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd_HH-mm-ss"))
+                +".zip";
+
+        context.tracing().stop(new Tracing.StopOptions().setPath(Paths.get(traceName)));
         context.close();
     }
 
