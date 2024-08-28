@@ -5,38 +5,18 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
-import com.microsoft.playwright.APIRequest;
-import com.microsoft.playwright.APIRequestContext;
 import com.microsoft.playwright.APIResponse;
-import com.microsoft.playwright.Playwright;
 import com.microsoft.playwright.assertions.PlaywrightAssertions;
+import org.example.common.BaseApiTest;
 import org.example.mofule_6_rest.dto.UserDto;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.HashMap;
-import java.util.Map;
+public class ReadSingleUserTest extends BaseApiTest {
 
-public class ReadSingleUserTest {
 
-    Playwright playwright;
-    APIRequest apiRequest;
-    APIRequestContext apiRequestContext;
-
-    @BeforeEach
-    void setup() {
-        Map<String, String> headers = new HashMap<>();
-        headers.put("Content-Type", "application/json");
-
-        playwright = Playwright.create();
-        apiRequest = playwright.request();
-        apiRequestContext = apiRequest.newContext(new APIRequest.NewContextOptions()
-                .setBaseURL("https://jsonplaceholder.typicode.com/")
-                .setExtraHTTPHeaders(headers));
-    }
     @Test
     void shouldReturnSingleUserTest() {
-        APIResponse apiResponse = apiRequestContext.get("users/10");
+        APIResponse apiResponse = requestContext.get("users/10");
         System.out.println(apiResponse.text());
         System.out.println(apiResponse.status());
         System.out.println(apiResponse.statusText());
@@ -48,7 +28,7 @@ public class ReadSingleUserTest {
 
     @Test
     void shouldReturnSingleUserGsonTest() {
-        APIResponse apiResponse = apiRequestContext.get("users/10");
+        APIResponse apiResponse = requestContext.get("users/10");
 
         PlaywrightAssertions.assertThat(apiResponse).isOK();
 
@@ -60,7 +40,7 @@ public class ReadSingleUserTest {
 
     @Test
     void shouldReturnSingleUserJacksonTest() throws JsonProcessingException {
-        APIResponse apiResponse = apiRequestContext.get("users/10");
+        APIResponse apiResponse = requestContext.get("users/10");
 
         PlaywrightAssertions.assertThat(apiResponse).isOK();
 
@@ -71,7 +51,7 @@ public class ReadSingleUserTest {
 
     @Test
     void shouldReturnSingleUserDtoTest() throws JsonProcessingException {
-        APIResponse apiResponse = apiRequestContext.get("users/10");
+        APIResponse apiResponse = requestContext.get("users/10");
 
         PlaywrightAssertions.assertThat(apiResponse).isOK();
 
