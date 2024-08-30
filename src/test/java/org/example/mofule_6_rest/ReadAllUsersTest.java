@@ -15,7 +15,7 @@ public class ReadAllUsersTest extends BaseApiTest {
         UserDto[] userDtos = new Gson().fromJson(response.text(), UserDto[].class);
 
         for(UserDto userDto: userDtos){
-            System.out.println(userDto);
+            log.info(userDto.toString());
         }
     }
 }
