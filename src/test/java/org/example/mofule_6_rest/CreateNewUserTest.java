@@ -7,7 +7,6 @@ import org.junit.jupiter.api.Test;
 
 public class CreateNewUserTest extends BaseApiTest {
 
-
     private static final String newUSer = """
               {
               "id": 11,
