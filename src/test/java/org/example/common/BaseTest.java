@@ -52,6 +52,4 @@ public class BaseTest {
     static void afterAll() {
         playwright.close();
     }
-
-
 }

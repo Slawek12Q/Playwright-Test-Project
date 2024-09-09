@@ -17,5 +17,4 @@ public class User {
     public String phone;
     public String website;
     public Company company;
-
 }

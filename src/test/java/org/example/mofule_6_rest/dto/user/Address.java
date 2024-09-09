@@ -12,5 +12,4 @@ public class Address {
     public String city;
     public String zipcode;
     public Geo geo;
-
 }
