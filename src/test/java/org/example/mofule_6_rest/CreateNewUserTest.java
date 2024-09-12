@@ -56,9 +56,9 @@ public class CreateNewUserTest extends BaseApiTest {
 
         APIResponse apiResponse = requestContext.post("users", RequestOptions.create().setData(user));
         APIResponse apiResponse1 = requestContext.post("users", RequestOptions.create().setData(user1));
-        PlaywrightAssertions.assertThat(apiResponse).isOK();
-        PlaywrightAssertions.assertThat(apiResponse1).isOK();
         log.info(apiResponse.text());
         log.info(apiResponse1.text());
+        PlaywrightAssertions.assertThat(apiResponse).isOK();
+        PlaywrightAssertions.assertThat(apiResponse1).isOK();
     }
 }
