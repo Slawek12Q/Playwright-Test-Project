@@ -11,6 +11,8 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static org.example.mofule_6_rest.transformers.PostTransformers.readUserToResponsePostDto;
+
 class PostsTest extends BaseApiTest {
 
 
@@ -19,7 +21,7 @@ class PostsTest extends BaseApiTest {
         APIResponse apiResponse = requestContext.get("posts/1");
         PlaywrightAssertions.assertThat(apiResponse).isOK();
         log.info(apiResponse.text());
-        PostsDto postsDto = new Gson().fromJson(apiResponse.text(), PostsDto.class);
+        PostsDto postsDto = readUserToResponsePostDto(apiResponse);
         System.out.println(postsDto.toString());
     }
 
