@@ -6,7 +6,6 @@ import com.microsoft.playwright.assertions.PlaywrightAssertions;
 import com.microsoft.playwright.options.RequestOptions;
 import org.example.common.BaseApiTest;
 import org.example.mofule_6_rest.dto.PostsDto;
-import org.example.mofule_6_rest.dto.UserDto;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
